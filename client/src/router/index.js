@@ -1,13 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '../views/HomePage.vue';
+import TheStore from '../views/TheStore.vue';
 
 const routes = [
     {
         path: '/',
         component: HomePage, 
     },{
-        path: '/shop', 
-        component: HomePage, 
+        path: '/store', 
+        component: TheStore, 
     }
 ];
 

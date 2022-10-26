@@ -1,37 +1,35 @@
 <template>
   <div>
     <h1>Latest Collection</h1>
-    <router-link to="/">HOME</router-link>
   </div>
   <hr>
-  <div class="createcollect">
+  <div class="createItem">
     <h2>Want to add something to my database ?</h2>
-    <input type="text" id="createcollect" v-model="text" placeholder="Type something here : ?">
-    <button v-on:click="createCollect">Post it</button>
+    <input type="text" id="createItem" v-model="text" placeholder="Type something here : ?">
+    <button v-on:click="createItem">Post it</button>
   </div>
   <p class="error" v-if="error">{{ error }}</p>
   <div class="container">
     <div class="collections"
-      v-for="(collect, index) in collects"
-      v-bind:item="collect"
+      v-for="(item, index) in items"
+      v-bind:item="item"
       v-bind:index="index"
-      v-bind:key="collect._id"
-      >
-        <p>{{ collect._id }}</p>
-        <p>{{ collect.text }}</p>
-        <p>{{ collect.Name }}</p>
+      v-bind:key="item._id">
+        <p>{{ item.name }}</p>
+        <p>{{ item.price }}</p>
+        <p>{{ item.manufacturer }}</p>
     </div>
   </div>
 </template>
 
 <script>
-import CollectService from '@/CollectService';
+import itemsService from '@/../itemsService.js';
 
 export default {
-  name: 'PostCollect',
+  name: 'TheStore',
   data(){
     return{
-      collects: [],
+      items: [],
       error: '',
       text: ''
     }
@@ -39,15 +37,15 @@ export default {
 
   async created() {
     try{
-      this.collects = await CollectService.getCollect(); 
+      this.items = await itemsService.getItems(); 
     }catch (err) {
       this.error = err.message; 
     }
   }, 
   methods: {
-    async createCollect() {
-      await CollectService.insertCollect(this.text);
-      this.collects = await CollectService.getCollect();
+    async createItem() {
+      await itemsService.insertItem(this.text);
+      this.items = await itemsService.getItems();
     }
   }
 }
@@ -72,9 +70,10 @@ a {
 
 .collections {
   display: flex; 
-  flex-direction: row;
   margin: auto; 
   text-align: center;
+  justify-content: space-around;
+  color: white;
 }
 
 </style>

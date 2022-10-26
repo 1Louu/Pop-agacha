@@ -1,9 +1,9 @@
 <template>
     <div class="head">
-        <p>Pop'agacha</p> 
+        <v-btn id="Title" elevation="0" tile  router-link to="/" >Pop'agacha</v-btn>
         <div>
-            <v-btn elevation="0" tile>Shop</v-btn>
-            <button>Contact Us</button>
+            <v-btn elevation="0" tile router-link to="/store">Shop</v-btn>
+            <v-btn elevation="0" tile>Contact Us</v-btn>
         </div>
     </div>
 </template>
@@ -30,12 +30,15 @@ export default {
     *
         margin: auto
     
-    p
-        margin-left: 10px
+    #Title
+        margin-left: 20px
+        font-size: 24px
+        text-decoration: underline
+        width: 240px
 
-    button
-        height: -webkit-fill-available
-        width: 200pxy
+    .v-btn
+        height: 60px
+        width: 200px
         background: none
         color: inherit
         border: none

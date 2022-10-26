@@ -33,7 +33,7 @@ async function tryConnectItem(){
         useNewUrlParser: true
     });
     
-    return client.db('popagacha').collection('Item');
+    return client.db('popagacha').collection('items');
 }
 
 module.exports = router; 

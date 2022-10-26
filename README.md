@@ -14,3 +14,11 @@ cors
 ## Currently using developpment installation ( requires npm install -D ):
 
 nodemon
+
+
+
+### Using the project : 
+
+npm run dev in /. 
+
+npm run serve in /client
