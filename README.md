@@ -19,6 +19,6 @@ nodemon
 
 ### Using the project : 
 
-npm run dev in /. 
-
 npm run serve in /client
+
+npm run dev in /client/backend 

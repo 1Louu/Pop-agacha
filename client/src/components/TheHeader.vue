@@ -1,9 +1,12 @@
 <template>
     <div class="head">
         <v-btn id="Title" elevation="0" tile  router-link to="/" >Pop'agacha</v-btn>
-        <div>
+        <div class="head-list">
             <v-btn elevation="0" tile router-link to="/store">Shop</v-btn>
             <v-btn elevation="0" tile>Contact Us</v-btn>
+            <v-btn elevation="0" tile><v-icon x-large >mdi-cart</v-icon></v-btn>
+            <v-btn elevation="0" tile><v-icon x-large>mdi-account</v-icon></v-btn>
+            <v-btn elevation="0" tile><v-icon x-large>mdi-format-list-bulleted-square</v-icon></v-btn>
         </div>
     </div>
 </template>
@@ -38,13 +41,14 @@ export default {
 
     .v-btn
         height: 60px
-        width: 200px
+        padding-left : 40px
+        padding-right : 40px
         background: none
-        color: inherit
+        color: #F0BBBB
         border: none
-        padding: 0
         font: inherit
-        cursor: pointer
-        outline: inherit
+
+.head-list
+    margin-right: 0px
 
 </style>

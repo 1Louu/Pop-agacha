@@ -4,20 +4,19 @@
   </div>
   <hr>
   <div class="createItem">
-    <h2>Want to add something to my database ?</h2>
     <input type="text" id="createItem" v-model="text" placeholder="Type something here : ?">
     <button v-on:click="createItem">Post it</button>
   </div>
-  <p class="error" v-if="error">{{ error }}</p>
-  <div class="container">
-    <div class="collections"
+  <div class="row">
+    <p class="error" v-if="error">{{ error }}</p>
+    <div class="col-3"
       v-for="(item, index) in items"
       v-bind:item="item"
       v-bind:index="index"
       v-bind:key="item._id">
-        <p>{{ item.name }}</p>
-        <p>{{ item.price }}</p>
-        <p>{{ item.manufacturer }}</p>
+        <p>Name : {{ item.name }}</p>
+        <p>Price : {{ item.price }}</p>
+        <p>Manufacturer : {{ item.manufacturer }}</p>
     </div>
   </div>
 </template>
@@ -49,31 +48,32 @@ export default {
     }
   }
 }
-</script>
+</script >
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style scoped lang="sass">
+.createItem
+  margin-top: 100px
+  width: 100%
+  height: 50px
+  background: #F89292
 
-.collections {
-  display: flex; 
-  margin: auto; 
-  text-align: center;
-  justify-content: space-around;
-  color: white;
-}
+.row
+  padding: 30px
+  background: rgba(52, 52, 52, 0.40)
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.20)
+  height: -webkit-fill-available
+  padding-bottom: 10%
+
+.col-3
+  text-align: left
+  color: white
+  background: rgba(216, 216, 216, 0.10)
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.20)
+  margin: 30px
+  height: 150px
+  padding: 10px 10px 10px 20px
+
+
 
 </style>
