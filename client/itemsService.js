@@ -25,7 +25,9 @@ class ItemsService{
     // Create Collect
     static insertItem(text){
         return axios.post(url, {
-            text
+            name: text.name,
+            price: text.price,
+            manufacturer: text.manufacturer
         });
     }
 

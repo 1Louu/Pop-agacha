@@ -4,7 +4,7 @@
   </div>
   <hr>
   <div class="createItem">
-    <input type="text" id="createItem" v-model="text" placeholder="Type something here : ?">
+    <input type="text" id="createItem" v-model="text.name" placeholder="Type something here : ?">
     <button v-on:click="createItem">Post it</button>
   </div>
   <div class="row">
@@ -30,7 +30,7 @@ export default {
     return{
       items: [],
       error: '',
-      text: ''
+      text: []
     }
   },
 
@@ -43,6 +43,8 @@ export default {
   }, 
   methods: {
     async createItem() {
+      this.text.price = 0;
+      this.text.manufacturer = "Nada"; 
       await itemsService.insertItem(this.text);
       this.items = await itemsService.getItems();
     }

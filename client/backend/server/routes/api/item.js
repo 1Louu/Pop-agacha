@@ -13,8 +13,10 @@ router.get('/', async (req, res)=> {
 router.post('/', async(req, res) => {
     const posts = await tryConnectItem(); 
     await posts.insertOne({
-        text: req.body.text, 
-        createdAt: new Date()
+        name: req.body.name, 
+        price: req.body.price,
+        category: req.body.category,
+        manufacturer: req.body.manufacturer
     });
     res.status(201).send();
 });
