@@ -17,6 +17,7 @@
         <p>Name : {{ item.name }}</p>
         <p>Price : {{ item.price }}</p>
         <p>Manufacturer : {{ item.manufacturer }}</p>
+        <button v-on:click="deleteItem(item._id)">DELETE !</button>
     </div>
   </div>
 </template>
@@ -33,7 +34,6 @@ export default {
       text: []
     }
   },
-
   async created() {
     try{
       this.items = await itemsService.getItems(); 
@@ -41,19 +41,32 @@ export default {
       this.error = err.message; 
     }
   }, 
+
   methods: {
     async createItem() {
       this.text.price = 0;
       this.text.manufacturer = "Nada"; 
       await itemsService.insertItem(this.text);
       this.items = await itemsService.getItems();
-    }
+    },
+    async deleteItem(id) {
+      console.log("damn why u harsh");
+      await itemsService.deleteItem(id);
+      this.items = await itemsService.getItems();
+    },
+
   }
 }
 </script >
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="sass">
+#createItem
+  height: 30px
+  background: white
+  border-radius: 15px
+  margin: auto
+
 .createItem
   margin-top: 100px
   width: 100%
@@ -65,7 +78,6 @@ export default {
   background: rgba(52, 52, 52, 0.40)
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.20)
   height: -webkit-fill-available
-  padding-bottom: 10%
 
 .col-3
   text-align: left
@@ -73,9 +85,10 @@ export default {
   background: rgba(216, 216, 216, 0.10)
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.20)
   margin: 30px
-  height: 150px
-  padding: 10px 10px 10px 20px
-
+  height: 200px
+  padding: 20px 20px 20px 20px
+  border-radius: 20px
+  width: 300px
 
 
 </style>
