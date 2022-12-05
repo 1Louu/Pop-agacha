@@ -5,7 +5,7 @@
   <hr>
   <div class="createItem">
     <input type="text" id="createItem" v-model="text.name" placeholder="Type something here : ?">
-    <button v-on:click="createItem">Post it</button>
+    <v-btn v-on:click="createItem">Post it</v-btn>
   </div>
   <div class="row">
     <p class="error" v-if="error">{{ error }}</p>
@@ -17,7 +17,10 @@
         <p>Name : {{ item.name }}</p>
         <p>Price : {{ item.price }}</p>
         <p>Manufacturer : {{ item.manufacturer }}</p>
-        <button v-on:click="deleteItem(item._id)">DELETE !</button>
+        <div>
+        <v-btn v-on:click="deleteItem(item._id)">DELETE !</v-btn>
+        <v-btn router-link v-bind:to="'/store/'+ item._id" >Details</v-btn>
+        </div>
     </div>
   </div>
 </template>
@@ -45,12 +48,11 @@ export default {
   methods: {
     async createItem() {
       this.text.price = 0;
-      this.text.manufacturer = "Nada"; 
+      this.text.manufacturer = "--"; 
       await itemsService.insertItem(this.text);
       this.items = await itemsService.getItems();
     },
     async deleteItem(id) {
-      console.log("damn why u harsh");
       await itemsService.deleteItem(id);
       this.items = await itemsService.getItems();
     },
@@ -66,12 +68,19 @@ export default {
   background: white
   border-radius: 15px
   margin: auto
+  width: 400px
+  padding-left: 10px
+  margin-right: 20px
 
 .createItem
   margin-top: 100px
   width: 100%
   height: 50px
   background: #F89292
+  display: flex
+  .v-btn
+    margin: auto
+    margin-left: 20px
 
 .row
   padding: 30px
@@ -89,6 +98,14 @@ export default {
   padding: 20px 20px 20px 20px
   border-radius: 20px
   width: 300px
+  .v-btn
+    background: rgba(216, 216, 216, 0.10)
+    margin: auto
+    color: white
+  
+  div
+    display: flex
+
 
 
 </style>

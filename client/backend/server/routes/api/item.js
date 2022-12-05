@@ -9,6 +9,12 @@ router.get('/', async (req, res)=> {
     res.send(await posts.find({}).toArray());
 });
 
+// Get Item By ID
+router.get('/:id', async (req, res)=> {
+    const posts = await tryConnectItem();
+    res.send(await posts.find({_id: new mongodb.ObjectID(req.params.id)}).toArray())
+});
+
 // Add Item
 router.post('/', async(req, res) => {
     const posts = await tryConnectItem(); 
@@ -31,7 +37,7 @@ router.delete('/:id', async (req, res) => {
 
 async function tryConnectItem(){
     const client = await mongodb.MongoClient.connect
-    ('mongodb://localhost:27017/popagacha', {
+    ('mongodb://127.0.0.1:27017/popagacha', {
         useNewUrlParser: true
     });
     

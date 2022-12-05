@@ -22,6 +22,25 @@ class ItemsService{
         });
     }
 
+
+    static getItemByID(id){
+        return new Promise ((resolve,reject) => {
+            axios.get(url + id).then((res) => {
+                const data = res.data;
+                resolve(
+                    data.map(post => ({
+                        ...post,
+                        createdAt: new Date(post.createdAt)
+                    }))
+                );
+            })
+            .catch((err)=> {
+                reject(err);
+            })
+            
+        });
+    }
+
     // Create Collect
     static insertItem(text){
         return axios.post(url, {
