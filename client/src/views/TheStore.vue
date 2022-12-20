@@ -2,7 +2,7 @@
   <div  data-aos="fade-in" class="createItem">
     <p>The store</p>
     <input type="text" id="createItem" v-model="text.name" placeholder="Type something here : ?">
-    <v-btn v-on:click="createItem">Post it</v-btn>
+    <v-btn @click="showModal = true">Add an article</v-btn>
   </div>
   <div class="row" data-aos="fade-in">
     <p class="error" v-if="error">{{ error }}</p>
@@ -15,21 +15,28 @@
         <img alt="Placeholder Image" :src="require('@/assets/image.jpg')">
         <p>{{ item.name }}</p>
         <p>{{ item.price }} €</p>
-        <!-- <v-btn v-on:click="deleteItem(item._id)">DELETE !</v-btn> -->
         </router-link>
     </div>
   </div>
+  <ThePopUp v-if="showModal" @close="showModal = false, this.refresh()"/>
 </template>
 
 <script>
 import itemsService from '@/../itemsService.js';
+import ThePopUp from '../components/ThePopUpCreateArticle.vue';
+const showModal = false;
+
 export default {
   name: 'TheStore',
+ components : {
+    ThePopUp
+  },
   data(){
     return{
       items: [],
       error: '',
-      text: []
+      text: [],
+      showModal,
     }
   },
   async created() {
@@ -39,15 +46,15 @@ export default {
       this.error = err.message; 
     }
   }, 
-
-  methods: {
-    async createItem() {
-      this.text.price = 0;
-      this.text.manufacturer = "--"; 
-      await itemsService.insertItem(this.text);
-      this.items = await itemsService.getItems();
+  methods: { // Adding methods in order for modals to refresh upon closinglm
+    async refresh() {
+      try{
+      this.items = await itemsService.getItems(); 
+    }catch (err) {
+      this.error = err.message; 
     }
-  }
+    },
+  },
 }
 </script >
 

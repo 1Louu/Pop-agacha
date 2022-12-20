@@ -2,8 +2,8 @@
   <div class="mainpannel" data-aos="fade-in">
     <H1 data-aos="fade-up" data-aos-delay="150" data-aos-duration="700">Pop'Agacha</H1>
     <p data-aos="fade-up" data-aos-delay="250" data-aos-duration="850" >A store for your fantasy need.</p>
-    <v-btn data-aos="fade-up" data-aos-delay="250" data-aos-duration="1200"  router-link to="/store" >See the store</v-btn>
-    <p id="test" data-aos="fade-left"  data-aos-duration="850" data-aos-delay="1500">Developped by 1Louu as a mock project. <a href="https://github.com/1Louu/Pop-agacha">Learn more here.</a></p>
+    <v-btn data-aos="fade-up" data-aos-delay="350" data-aos-duration="1200"  router-link to="/store" >See the store</v-btn>
+    <p id="test" data-aos="fade-in"  data-aos-duration="850" data-aos-delay="1300">Developped by 1Louu as a mock project. <a href="https://github.com/1Louu/Pop-agacha">Learn more here.</a></p>
   </div>
   <div>
 
