@@ -19,7 +19,11 @@ import itemsService from '../../itemsService.js';
 export default {
     name: 'ThePopUp',
     data(){
-      return{     
+      return{   
+        rules: [
+        value => !!value || 'Required.',
+        value => (value || '').length <= 20 || 'Max 20 characters'
+      ],
         text: [],
       }
     },
