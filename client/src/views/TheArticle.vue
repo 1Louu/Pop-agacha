@@ -2,7 +2,7 @@
   <div class="article" data-aos="fade-in">
     <img alt="Placeholder Image" :src="require('@/assets/image.jpg')">
     <div class="articledetails">
-      <h1>This is your ID : {{ items[0]._id }}</h1>
+      <h1>ID : {{ items[0]._id }}</h1>
       <p>Title : {{ items[0].name }}</p>
       <p>Price : {{ items[0].price}} €</p>
       <p>Manufacturer : {{ items[0].manufacturer }}</p>

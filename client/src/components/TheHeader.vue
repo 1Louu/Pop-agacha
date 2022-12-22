@@ -27,7 +27,7 @@ export default {
     align-content: space-around
     background: rgba(216, 216, 216, 0.10)
     color: #F0BBBB
-    height: 60px
+    min-height: 60px
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.20)
     
     *
